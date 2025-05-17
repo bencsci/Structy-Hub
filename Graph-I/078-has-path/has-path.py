@@ -1,9 +1,13 @@
-def has_path(graph, src, dst):
-  if src == dst:
-    return True 
+from collections import deque
 
-  for n in graph[src]:
-    if has_path(n):
+def has_path(graph, src, dst):
+  q = deque([src])
+
+  while q:
+    curr == q.popleft()
+    if curr = dst:
       return True
+    for n in graph[curr]:
+      q.append(n)
 
   return False
