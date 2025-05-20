@@ -1,6 +1,6 @@
 # traverse grid until we find Land
 # dfs search while keeping the count of the size
-# return the size once thed dfs has completed
+# return the size once the dfs has completed
 # compare to find min size
 def minimum_island(grid):
   rows = len(grid)
