@@ -14,3 +14,21 @@ def island_count(grid):
 
     if grid[row][col] == 'V':
       return False
+
+    grid[row][col] = 'V'
+
+    dfs(row+1, col)
+    dfs(row-1, col)
+    dfs(row, col+1)
+    dfs(row, col-1)
+
+    return True
+
+  count = 0
+  for row in range(rows):
+    for col in range(cols):
+      if dfs(row, col):
+        count += 1
+
+  return count
+        
