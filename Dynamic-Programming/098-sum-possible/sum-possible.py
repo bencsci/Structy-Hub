@@ -3,8 +3,8 @@ def sum_possible(amount, numbers):
 
   def dfs(amount):
 
-    if n in memo:
-      return memo[n]
+    if amount in memo:
+      return memo[amount]
     
     if amount == 0:
       return True
@@ -12,10 +12,10 @@ def sum_possible(amount, numbers):
     for num in numbers:
       if amount - num >= 0:
         if dfs(amount - num):
-          memo[n] = True
+          memo[amount] = True
           return True
 
-    memo[n] = False
+    memo[amount] = False
     return False
 
   return dfs(amount)
