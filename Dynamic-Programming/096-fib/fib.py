@@ -10,4 +10,7 @@ def fib(n):
     elif n == 1:
       return 1
 
-    
+    memo[n] = dfs(n-1) + dfs(n-2)
+    return memo[n]
+
+  return dfs(n)
