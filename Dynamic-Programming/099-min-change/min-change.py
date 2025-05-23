@@ -1,7 +1,10 @@
 def min_change(amount, coins):
   memo = {}
-
+  
   def dfs(amount):
+    if amount in memo:
+      return memo[amount]
+    
     if amount < 0:
       return float('inf')
 
@@ -11,9 +14,9 @@ def min_change(amount, coins):
     minC = float('inf')
     for coin in coins:
       minC = min(minC, dfs(amount - coin) + 1)
-
+      memo[amount] = minC
+      
     memo[amount] = minC
-    return minC
+    return memo[amount]
 
-  ans = dfs(amount)
-  return ans if ans != float('inf') else - 1
+  return dfs(amount)
