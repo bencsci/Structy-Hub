@@ -41,8 +41,3 @@ def perfect_squares(n):
     squares.append(square)
 
   return squares
-
-# test = summing_squares(12)
-1
-# print(perfect_squares(1))
-# print(test)
