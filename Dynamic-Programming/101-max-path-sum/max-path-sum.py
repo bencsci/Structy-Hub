@@ -19,7 +19,7 @@ def max_path_sum(grid):
       memo[pos] = val
       return val
 
-    memo[pos] = max(dfs(row + 1, col) + val, dfs(row, col + 1) + 1)
+    memo[pos] = max(dfs(row + 1, col) + val, dfs(row, col + 1) + val)
     return memo[pos]
 
   return dfs(0,0)
