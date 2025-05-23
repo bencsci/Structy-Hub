@@ -20,4 +20,6 @@ def count_paths(grid):
     memo[pos] = dfs(row+1,col) + dfs(row,col+1)
     return memo[pos]
 
+  return dfs(0,0)
+
     
