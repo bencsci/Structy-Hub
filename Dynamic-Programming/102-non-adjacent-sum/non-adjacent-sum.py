@@ -14,7 +14,8 @@
 # if the do not take the first item have an index starting at the second item repsenting possible sums
 
 def non_adjacent_sum(nums):
-
+  memo = {}
+  
   def dfs(i):
     if i in memo:
       return memo[i]
@@ -28,8 +29,4 @@ def non_adjacent_sum(nums):
     memo[i] = max(include, exclude)
     return memo[i]
 
-  return dfs(i)
-    
-    
-      
-  
+  return dfs(0)
