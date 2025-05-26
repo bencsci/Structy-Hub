@@ -1,44 +1,38 @@
-# get all perfect sqares up to n, in an array 
-# subtract each number in that array from n
-# if n == 0 return 0 indicating we reached an answer
-# keep track of each recursive call to count the number of squares added
-# compare the min of each success full branch to find the minimum 
-
-
 def summing_squares(n):
-  squares = perfect_squares(n)
-
   memo = {}
-  
-  def dfs(n):
-    if n in memo:
-      return memo[n]
+
+  def dfs(amount):
+    squares = perfect_squares(amount)
     
-    if n < 0:
+    if amount in memo:
+      return memo[amount]
+    
+    if amount < 0:
       return float('inf')
 
-    if n == 0:
+    if amount == 0:
       return 0
 
-    maxSq = float('inf')
+    minS = float('inf')
     for square in squares:
-      maxSq = min(maxSq, dfs(n-square) + 1)
+      minS = min(minS, dfs(amount-square) + 1)
+      memo[amount] = minS
 
-    memo[n] = maxSq
-    return memo[n]
-
+    memo[amount] = minS
+    return memo[amount]
   return dfs(n)
 
 def perfect_squares(n):
   squares = []
 
   if n == 1:
-    return [n]
-
+    return [1]
+  
   for i in range(1, n):
-    square = i*i
+    square = i * i
     if square > n:
       return squares
     squares.append(square)
 
   return squares
+
