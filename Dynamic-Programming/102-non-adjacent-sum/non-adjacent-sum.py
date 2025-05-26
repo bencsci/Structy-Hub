@@ -12,8 +12,6 @@ def non_adjacent_sum(nums):
     exclude = dfs(i + 1)
 
     memo[i] = max(include, exclude)
-    return maxS
+    return memo[i]
 
   return dfs(0)
-
-
