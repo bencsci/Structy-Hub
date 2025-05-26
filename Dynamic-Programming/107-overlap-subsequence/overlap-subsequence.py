@@ -14,10 +14,7 @@ def overlap_subsequence(string_1, string_2):
     if string_1[s1] == string_2[s2]:
       return 1 + dfs(s1+1, s2+1)
 
-    memo[key] == max(dfs(s1+1, s2), dfs(s1, s2+1))
+    memo[key] = max(dfs(s1+1, s2), dfs(s1, s2+1))
     return memo[key]
 
   return dfs(0, 0)
-
-  
-  
