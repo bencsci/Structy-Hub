@@ -11,11 +11,11 @@ def counting_change(amount, coins):
     if key in memo:
       return memo[key]
     
-    if i == len(coins):
-      return 0
-    
     if amount == 0:
       return 1
+
+    if i == len(coins):
+      return 0
 
     coin = coins[i]
 
