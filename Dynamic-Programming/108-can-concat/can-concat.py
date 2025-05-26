@@ -21,7 +21,7 @@ def can_concat(s, words):
 
     for word in words:
       if dfs(curr + word):
-        memo[curr] == True
+        memo[curr] = True
         return memo[curr]
 
     memo[curr] = False
@@ -39,5 +39,3 @@ def match(w1, w2):
     s2[c] = 1 + s2.get(c, 0)
 
   return s1 == s2
-
-  
