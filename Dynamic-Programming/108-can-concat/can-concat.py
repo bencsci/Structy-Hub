@@ -11,7 +11,7 @@ def can_concat(s, words):
     if idx in memo:
       return memo[idx]
 
-    if idx >= len(s):
+    if idx == len(s):
       return True
 
     for word in words:
