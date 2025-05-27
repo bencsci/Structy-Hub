@@ -1,41 +1,27 @@
-# create a recursive tree with each branch adding a word on the list
-# with each recursive call check if it "matches" with the original string
-# if yes then return True
-# if the current built string len is > the original string: return False
-# default return False
+# Create a recusive tree where each node represents the current string
+# each branch checks if each word in words is at the start of the curr string
+# if it starts with that word, increase the index to pass the end of that that word
+# marking the start of a new string
+# if we reach the end of the string then we return True
 
-# Optimization: use memoization to reuse already seen values
 def can_concat(s, words):
-
   memo = {}
   
-  def dfs(curr):
-    if curr in memo:
-      return memo[curr]
-    
-    if len(curr) > len(s):
-      return False
+  def dfs(idx):
+    if idx in memo:
+      return memo[idx]
 
-    if match(curr, s):
+    if idx >= len(s):
       return True
 
     for word in words:
-      if dfs(curr + word):
-        memo[curr] = True
-        return memo[curr]
+      if s.startswith(word, idx):
+        if dfs(idx + len(word)):
+          memo[idx] = True
+          return True
 
-    memo[curr] = False
-    return memo[curr]
+    memo[idx] = False
+    return memo[idx] 
 
-  return dfs("")
+  return dfs(0)
 
-def match(w1, w2):
-  s1 = {}
-  s2 = {}
-
-  for c in w1:
-    s1[c] = 1 + s1.get(c, 0)
-  for c in w2:
-    s2[c] = 1 + s2.get(c, 0)
-
-  return s1 == s2
