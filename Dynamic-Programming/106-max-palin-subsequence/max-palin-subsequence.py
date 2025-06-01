@@ -1,11 +1,11 @@
-# Create a recursive tree where each node represents the string
-# each branch represents a decision on the modified string
-# if the l and r equal: then move both pointers and increase count by 2
-# move the l pointer only
-# move the r pointer only
-# if l > r: return 0
+# have two pointers at the start and end of the string
+# if they match return 2 and then move both pointers inward
+# else take the max of the decision of increasing the left or right pointers
+# return count at the end
 
-# Optimization: use memoization to store recomputed values
+#   l r
+# luwxult
+
 def max_palin_subsequence(string):
   memo = {}
   
@@ -14,18 +14,20 @@ def max_palin_subsequence(string):
 
     if key in memo:
       return memo[key]
-    
+
     if l > r:
       return 0
     
     if l == r:
       return 1
-      
+    
     if string[l] == string[r]:
-      memo[key] = 2 + dfs(l + 1,r - 1)
-    else:
-      memo[key] = max(dfs(l + 1, r), dfs(l, r - 1))
+      return 2 + dfs(l + 1, r - 1)
 
+    count = 0
+    count += max(dfs(l + 1, r), dfs(l, r - 1))
+
+    memo[key] = count
     return memo[key]
 
   return dfs(0, len(string) - 1)
