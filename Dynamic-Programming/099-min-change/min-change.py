@@ -18,7 +18,6 @@ def min_change(amount, coins):
     if amount == 0:
       return 0
 
-    count = 0
     minC = float('inf')
     for coin in coins:
       minC = min(minC, dfs(amount - coin) + 1)
