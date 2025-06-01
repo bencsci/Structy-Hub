@@ -1,18 +1,12 @@
-# subtract each coin in coins from the amount
-# keep count of each recursive call for each branch
-# if amount == 0 return the total count for that branch
-# compare different successful min values for each branch
-# return the min value
-
-# Optimization: Use Memo to store seen values
-# reuse those values if a calculation reappears
-
-# time o(a*c) -> space o(n)
+# Create recusrive tree where each node represents the amount
+# each branch is the decision to choose one the coin the the coins
+# keep track of the amount of decison in a branch 
+# if amount < 0 reutrn False
+# if amount == 0 updtae the minC
 
 def min_change(amount, coins):
-
   memo = {}
-
+  
   def dfs(amount):
 
     if amount in memo:
@@ -20,19 +14,17 @@ def min_change(amount, coins):
     
     if amount < 0:
       return float('inf')
-    
+
     if amount == 0:
       return 0
 
+    count = 0
     minC = float('inf')
     for coin in coins:
-      minC = min(minC, dfs(amount-coin) + 1)
+      minC = min(minC, dfs(amount - coin) + 1)
 
     memo[amount] = minC
     return memo[amount]
 
-  ans = dfs(amount) 
-  return ans if ans != float('inf') else -1 
-      
-
-    
+  ans = dfs(amount)
+  return ans if ans != float('inf') else -1
