@@ -10,4 +10,5 @@ def tree_sum(root):
 
   left = tree_sum(root.left)
   right = tree_sum(root.right)
+
   return root.val + left + right
