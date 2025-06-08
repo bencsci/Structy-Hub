@@ -8,9 +8,10 @@ def max_path_sum(root):
   if root is None:
     return float('-inf')
 
-  
-  
+  if root.left is None and root.right is None:
+    return root.val
+
   left = max_path_sum(root.left)
-  right = max_path_sum(root.right)
+  right = max_path_sum(rootright)
 
   return root.val + max(left, right)
