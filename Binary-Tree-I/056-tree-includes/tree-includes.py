@@ -11,7 +11,7 @@ def tree_includes(root, target):
   if root.val == target:
     return True
 
-  left = tree_includes(root.left)
-  right = tree_includes(root.right)
+  left = tree_includes(root.left, target)
+  right = tree_includes(root.right, target)
 
   return left or right
