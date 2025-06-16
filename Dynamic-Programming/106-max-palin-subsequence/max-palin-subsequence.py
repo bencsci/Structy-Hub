@@ -1,10 +1,9 @@
-# have two pointers at the start and end of the string
-# if they match return 2 and then move both pointers inward
-# else take the max of the decision of increasing the left or right pointers
-# return count at the end
-
-#   l r
-# luwxult
+# Have two pointers starting at the start and end of the string
+# if both characters match return 2 + move both pointers inward
+# if they don't match choose to move the left or right pointer inward
+# Base cases:
+# l == r:
+# return 1
 
 def max_palin_subsequence(string):
   memo = {}
@@ -14,20 +13,18 @@ def max_palin_subsequence(string):
 
     if key in memo:
       return memo[key]
-
+  
     if l > r:
       return 0
     
     if l == r:
       return 1
-    
+
     if string[l] == string[r]:
-      return 2 + dfs(l + 1, r - 1)
+      memo[key] = 2 + dfs(l + 1, r - 1)
+      return memo[key]
 
-    count = 0
-    count += max(dfs(l + 1, r), dfs(l, r - 1))
-
-    memo[key] = count
+    memo[key] = max(dfs(l + 1, r), dfs(l, r - 1))
     return memo[key]
 
-  return dfs(0, len(string) - 1)
+  return dfs(0, len(string)-1)
