@@ -1,27 +1,27 @@
+# Traverse the grid by moving to the right or down keep track of the running sum
+# have a max to update if there is a new max
+# if we are out of bounds return -inf
+# if we reach the bottom right corner return our current number
+
 def max_path_sum(grid):
+  memo = {}
   rows = len(grid)
   cols = len(grid[0])
-
-  memo = {}
   
   def dfs(row, col):
     pos = (row, col)
-    
-    if pos in memo:
-      return memo[pos]
-    
-    if not (0 <= row < rows) or not (0 <= col < cols):
-      return 0
 
-    val = grid[row][col]
-    
-    if row == rows - 1 and cols == col - 1:
-      memo[pos] = val
-      return val
+    if not (0 <= row < rows and 0 <= col < cols):
+      return float('-inf')
 
-    memo[pos] = max(dfs(row + 1, col) + val, dfs(row, col + 1) + val)
-    return memo[pos]
+    if row == rows - 1 and col == cols - 1:
+      return grid[row][col]
+      
+    num = grid[row][col]
+    maxS = float('-inf')
+    maxS = max(maxS, dfs(row+1, col) + num, dfs(row, col+1) + num)
 
-  return dfs(0,0)
+    return maxS
 
-
+  return dfs(0, 0)
+  
