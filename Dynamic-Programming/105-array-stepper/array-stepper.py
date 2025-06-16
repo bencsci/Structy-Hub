@@ -1,29 +1,29 @@
-# Create a recursive Tree, where each node represents an the current index
-# Each branch is the step at the index
-# If our current step is 0: return False
-# If we are >= len(numbers) - 1: return True -> this means we reached the end of the array
+# Traverse through the list and create a dicision tree of choosing steps at that index
+# if we are at the end of the list or beyond return True
+# if we land on a 0 return False
 
 def array_stepper(numbers):
+
   memo = {}
   
-  def dfs(idx):
-    if idx in memo:
-      return memo[idx]
-    
-    if idx >= len(numbers) - 1:
+  def dfs(i):
+
+    if i in memo:
+      return memo[i]
+      
+    if i >= len(numbers):
       return True
 
-    curr_step = numbers[idx]
-
-    if curr_step == 0:
+    step = numbers[i]
+    if step == 0:
       return False
 
-    for step in range(1, curr_step + 1):
-      if dfs(idx + step):
-        memo[idx] = True
-        return True
+    for step in range(1, step + 1):
+      if dfs(i + step):
+        memo[i] = True
+        return memo[i]
 
-    memo[idx] = False
-    return memo[idx]
+    memo[i] = False
+    return memo[i]
 
   return dfs(0)
