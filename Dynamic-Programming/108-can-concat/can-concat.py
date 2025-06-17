@@ -1,27 +1,27 @@
-# Create a recusive tree where each node represents the current string
-# each branch checks if each word in words is at the start of the curr string
-# if it starts with that word, increase the index to pass the end of that that word
-# marking the start of a new string
-# if we reach the end of the string then we return True
+# Have an index starting at the start of the word
+# for each word in words check if that word is at the beginning of s
+# if it is move the index to i + len(word)
+# if we reach the end of the string return True
+# else False
 
 def can_concat(s, words):
+
   memo = {}
   
-  def dfs(idx):
-    if idx in memo:
-      return memo[idx]
-
-    if idx == len(s):
+  def dfs(i):
+    if i in memo:
+      return memo[i]
+    
+    if i == len(s) - 1:
       return True
 
     for word in words:
-      if s.startswith(word, idx):
-        if dfs(idx + len(word)):
-          memo[idx] = True
-          return True
+      if s.startswith(word, i):
+        if dfs(i + len(word)):
+          memo[i] = True
+          return memo[i]
 
-    memo[idx] = False
-    return memo[idx] 
+    memo[i] = False
+    return memo[i]
 
   return dfs(0)
-
