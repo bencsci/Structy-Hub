@@ -5,7 +5,7 @@ def has_path(graph, src, dst):
 
   while q:
     curr = q.pop()
-    if curr = dst:
+    if curr == dst:
       return True
     for neighbour in graph[curr]:
       q.append(neighbour)
