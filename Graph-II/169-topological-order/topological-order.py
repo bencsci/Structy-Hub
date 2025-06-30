@@ -1,7 +1,7 @@
 # Greate a adjacency list for the number of parents each node has
 # Add all nodes who has 0 parents to a queue
-# Add nodes from queue to result list
-# Go through the queue and update the number of parents for each node in the queue
+# Add current node from queue to result list
+# Go through the queue and update the number of parents for each child at that curr node in the queue
 # check if the number of parents for each child is 0, if so add to queue
 
 def topological_order(graph):
@@ -26,8 +26,8 @@ def getParents(graph):
   for node in graph:
     parents[node] = 0
 
-  for parent in graph:
-    for child in graph[parent]:
+  for node in graph:
+    for child in graph[node]:
       parents[child] += 1 
 
   return parents
