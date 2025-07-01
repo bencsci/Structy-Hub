@@ -10,7 +10,7 @@ def can_color(graph):
 
   def dfs(src, current):
     if src in colored:
-      return current == colored
+      return current == colored[src]
 
     colored[src] = current
 
