@@ -23,4 +23,4 @@ def zipper_lists(head_1, head_2):
   if c2:
     tail.next = c2
 
-  return 
+  return head_1
