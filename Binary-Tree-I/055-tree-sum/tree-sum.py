@@ -8,7 +8,7 @@ def tree_sum(root):
   if root is None:
     return 0
 
-  left = tree_sum(root.left)
-  right = tree_sum(root.right)
+  left = root.left
+  right = root.right
 
-  return root.val + left + right
+  return root.val + tree_sum(left) + tree_sum(right)
