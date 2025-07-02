@@ -5,4 +5,4 @@ def prefix_product(numbers):
     product *= num
     res.append(product)
 
-  return res
+  return res # Test
