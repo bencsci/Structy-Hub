@@ -6,7 +6,7 @@
 
 def depth_first_values(root):
   if root is None:
-    return None
+    return []
 
   left = depth_first_values(root.left)
   right = depth_first_values(root.right)
