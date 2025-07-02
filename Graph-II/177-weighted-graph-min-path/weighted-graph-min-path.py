@@ -1,7 +1,8 @@
 # Traverse through the graph using dfs and mark visited nodes
 # If we reach the target node return 0
 # add the costs of each node each time we travel to a new node
-# compared the cost and reuturn min
+# compare the cost to get the min
+# remove the visited node so we can bracktrack to another path
 
 def weighted_graph_min_path(graph, src, dst):
   v = set()
