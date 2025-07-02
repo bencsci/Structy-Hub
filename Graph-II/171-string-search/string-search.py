@@ -36,8 +36,7 @@ def string_search(grid, s):
 
   for row in range(rows):
     for col in range(cols):
-      if grid[row][col] == s[0]:
-        if dfs(row, col, 0):
-          return True
+      if dfs(row, col, 0):
+        return True
 
   return False 
