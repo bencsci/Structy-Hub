@@ -5,4 +5,10 @@
 #     self.right = None
 
 def tree_sum(root):
-  pass # todo
+  if root is None:
+    return 0
+
+  left = tree_sum(root.left)
+  right = tree_sum(root.right)
+
+  return root.val + left + right
