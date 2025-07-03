@@ -16,16 +16,14 @@ def tree_levels(root):
   while q:
     length = len(q)
     level = []
-    
     for _ in range(length):
       curr = q.popleft()
       level.append(curr.val)
-      
       if curr.left:
         q.append(curr.left)
       if curr.right:
         q.append(curr.right)
-        
+
     levels.append(level)
 
-  return levels
+  return levels   
