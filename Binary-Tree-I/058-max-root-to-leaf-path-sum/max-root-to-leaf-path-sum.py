@@ -12,6 +12,6 @@ def max_path_sum(root):
     return root.val
 
   left = max_path_sum(root.left)
-  right = max_path_sum(rootright)
+  right = max_path_sum(root.right)
 
-  return root.val + max(left, right)
+  return max(left, right) + root.val
